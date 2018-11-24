@@ -1,0 +1,16 @@
+{
+    "name": "osushi/apidoc",
+    "require": {
+        "php" : "~7.0.0 | ~7.1.0 | ~7.2.0",
+        "twig/twig": "~2.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.4.4",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Osushi\\Autodoc\\": "src/"
+        }
+    }
+}
