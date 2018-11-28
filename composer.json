@@ -1,16 +1,33 @@
 {
     "name": "osushi/apidoc",
+    "description": "API markdown document generator",
+    "keywords": ["api", "markdown", "md", "document", "doc", "docs", "generator"],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/Osushi/apidoc",
+    "authors": [
+        {
+            "name": "Osushi",
+            "homepage": "https://github.com/Osushi",
+            "role": "Author"
+        }
+    ],
     "require": {
         "php" : "~7.0.0 | ~7.1.0 | ~7.2.0",
         "twig/twig": "~2.5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.4.4",
+        "phpunit/phpunit": "~6.5.13",
         "mockery/mockery": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "Osushi\\Autodoc\\": "src/"
+            "Osushi\\Apidoc\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     }
 }
