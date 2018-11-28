@@ -190,7 +190,7 @@ Apidoc::init([Parameter.php
 ```
 
 + Config::DOCUMENT_TEMPLATE_PATH - [String] twig template for each document (default: [document.md](templates/document.md))
-+ Config::DOCUMENT_TOC_TEMPLATE_PATH - [String] twig template for ToC of docuement (default: [document.toc.md](templates/docuemnt.toc.md))
++ Config::DOCUMENT_TOC_TEMPLATE_PATH - [String] twig template for ToC of docuement (default: [document.toc.md](templates/document.toc.md))
 + Config::DOCUMENT_TOC_TITLE - [String] ToC of document title (default: # Table of Contents)
 + Config::TOC_TEMPLATE_PATH - [String] twig template for ToC (default: [toc.md](templates/toc.md))
 + Config::TOC_TITLE - [String] ToC title (default: # Table of Contents);
