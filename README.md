@@ -211,6 +211,7 @@ $parameter->note('here is note');
     + options.isa - string (e.g. string, integer)
     + options.required - boolean (e.g. true/false)
     + options.comment- string (e.g. comment)
+    + options.format- string (e.g. Ymd)
     + options.except - array (e.g. ['bob', 'john'])
     + options.only - array (e.g. [10, 20])
 + note(string $node) - Add note for documents
