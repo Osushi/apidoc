@@ -6,10 +6,10 @@
 {% if parameter.options.default or parameter.options.format or parameter.options.except or parameter.options.only %}
 {% set comments = [] %}
 {% if parameter.options.default %}
-{% set comments = comments|merge(['default: `' ~ parameter.options.default ~ '`']) %}
+{% set comments = comments|merge(['default: `' ~ parameter.options.default|raw ~ '`']) %}
 {% endif %}
 {% if parameter.options.format %}
-{% set comments = comments|merge(['default: `' ~ parameter.options.format ~ '`']) %}
+{% set comments = comments|merge(['format: `' ~ parameter.options.format|raw ~ '`']) %}
 {% endif %}
 {% if parameter.options.only %}
 {% set comments = comments|merge(['only: `[' ~ parameter.options.only|join(', ') ~ ']`']) %}
