@@ -3,10 +3,13 @@
 {% if parameter.options.isa %}
 {% set string = string ~ ' **' ~ parameter.options.isa ~ '**' %}
 {% endif %}
-{% if parameter.options.default or parameter.options.except or parameter.options.only %}
+{% if parameter.options.default or parameter.options.format or parameter.options.except or parameter.options.only %}
 {% set comments = [] %}
 {% if parameter.options.default %}
 {% set comments = comments|merge(['default: `' ~ parameter.options.default ~ '`']) %}
+{% endif %}
+{% if parameter.options.format %}
+{% set comments = comments|merge(['default: `' ~ parameter.options.format ~ '`']) %}
 {% endif %}
 {% if parameter.options.only %}
 {% set comments = comments|merge(['only: `[' ~ parameter.options.only|join(', ') ~ ']`']) %}
