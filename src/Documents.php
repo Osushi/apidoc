@@ -52,7 +52,7 @@ class Documents
 
     public function render()
     {
-        if (!in_array('APIDOC', $_SERVER['argv'])) {
+        if (!in_array('APIDOC', $_SERVER['argv']) && empty($_SERVER['APIDOC'])) {
             return false;
         }
         if (!file_exists($this->config->getConfig($this->config::OUTPUT_PATH))) {
