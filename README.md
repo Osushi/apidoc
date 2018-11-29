@@ -95,7 +95,7 @@ use Osushi\Apidoc\Apidoc;
 
 Apidoc::init();
 
-register_shutdown_function(fuction(){
+register_shutdown_function(function(){
    $apiDoc = Apidoc::getInstance();
    $apiDoc->render();
 })
@@ -165,7 +165,7 @@ class UserIndexTest extends TestCase
 
 #### 3. Run apidoc
 ```bash
-$ phpunit APIDOC
+$ APIDOC=1 phpunit
 $ tree docs
 docs
 ├── toc.md
