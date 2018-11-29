@@ -55,6 +55,15 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
+
+        // FORMAT
+        $this->assertTrue($mock->validate($this->parameter::FORMAT, 'YMD'));
+        try {
+            $mock->validate($this->parameter::FORMAT, []);
+            $this->fail('Failed validation ['. $this->parameter::FORMAT .']');
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+        }
         
         // REQUIRED
         $this->assertTrue($mock->validate($this->parameter::REQUIRED, true));
