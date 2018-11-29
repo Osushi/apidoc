@@ -12,6 +12,8 @@ class Parameter
 
     const COMMENT = 'comment';
 
+    const FORMAT = 'format';
+    
     const EXCEPT = 'except';
 
     const ONLY = 'only';
@@ -21,6 +23,7 @@ class Parameter
         self::DEFAULT,
         self::REQUIRED,
         self::COMMENT,
+        self::FORMAT,
         self::EXCEPT,
         self::ONLY,
     ];
@@ -90,6 +93,11 @@ class Parameter
                 }
                 break;
             case self::COMMENT:
+                if (!is_string($option)) {
+                    throw new \Exception('Please set string [' . $name . ']');
+                }
+                break;
+            case self::FORMAT:
                 if (!is_string($option)) {
                     throw new \Exception('Please set string [' . $name . ']');
                 }
