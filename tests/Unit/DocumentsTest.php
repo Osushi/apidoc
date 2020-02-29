@@ -8,19 +8,20 @@ use Osushi\Apidoc\Parameter;
 use Osushi\Apidoc\Config;
 use Osushi\Apidoc\Request;
 use Osushi\Apidoc\Response;
+use Twig\Environment;
 use Mockery as m;
 
 class DocumentsTest extends TestCase
 {
     private $documents;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->documents = new Documents(
             new Config()
         );
     }
-         
+
     public function testRecord()
     {
         $parameter = new Parameter();
@@ -80,9 +81,9 @@ class DocumentsTest extends TestCase
         $mock = m::mock($this->documents)
               ->makePartial()
               ->shouldAllowMockingProtectedMethods();
-        $this->assertTrue($mock->load() instanceof \Twig_Environment);
+        $this->assertTrue($mock->load() instanceof Environment);
     }
-    
+
     public function testGetKeys()
     {
         $mock = m::mock($this->documents)
@@ -99,11 +100,11 @@ class DocumentsTest extends TestCase
             $this->assertTrue(true);
         }
     }
-    
+
     public function testRender()
     {
         $this->assertFalse($this->documents->render());
-        
+
         $_SERVER['argv'] = ['APIDOC'];
         $documents = new Documents(
             new Config([
@@ -121,7 +122,7 @@ class DocumentsTest extends TestCase
             Config::OUTPUT_PATH => 'examples',
         ]);
         $documents = new Documents($config);
-        
+
         $parameter = new Parameter();
         $parameter->add('name', ['isa' => 'string', 'required' => true, 'comment' => 'user name', 'except' => ['bob', 'john']]);
         $parameter->add('status', ['isa' => 'numric', 'default' => '10', 'comment' => 'user status', 'only' => ['10', '20', '30']]);
@@ -133,40 +134,40 @@ class DocumentsTest extends TestCase
             $parameter,
             'Get All Users'
         );
-        
+
         $request = new Request([
             'method' => 'GET',
             'path' => '/users',
             'parameters' => ['status' => 10, 'name' => 'tarou'],
             'headers' => ['Content-Type' => 'application/json'],
         ]);
-        
+
         $response = new Response([
             'code' => 200,
             'headers' => ['Content-Type' => 'application/json; charset=utf-8'],
             'body' => '{"id": 1,"name": "tarou","status": 10,"created_at": "2015-04-21T14:55:09.351Z","updated_at": "2015-04-21T14:55:09.351Z"}',
         ]);
-        
+
         $documents->example(
             'users:/users:GET',
             $request,
             $response,
             '200 Success'
         );
-        
+
         $request = new Request([
             'method' => 'GET',
             'path' => '/users',
             'parameters' => ['status' => 20, 'name' => 'tarou'],
             'headers' => ['Content-Type' => 'application/json'],
         ]);
-        
+
         $response = new Response([
             'code' => 404,
             'headers' => ['Content-Type' => 'application/json; charset=utf-8'],
             'body' => '{"message": "not found"}',
         ]);
-        
+
         $documents->example(
             'users:/users:GET',
             $request,
@@ -185,20 +186,20 @@ class DocumentsTest extends TestCase
             $parameter,
             'Post New User'
         );
-        
+
         $request = new Request([
             'method' => 'POST',
             'path' => '/users/new',
             'parameters' => ['status' => 10, 'name' => 'ichiro'],
             'headers' => ['Content-Type' => 'application/json'],
         ]);
-        
+
         $response = new Response([
             'code' => 200,
             'headers' => ['Content-Type' => 'application/json; charset=utf-8'],
             'body' => '{"id": 1,"created_at": "2015-04-21T14:55:09.351Z"}',
         ]);
-        
+
         $documents->example(
             'users:/users/new:POST',
             $request,
@@ -213,8 +214,8 @@ class DocumentsTest extends TestCase
         $this->assertTrue(file_exists($path.'/toc.md') && filemtime($path.'/toc.md') >= $time);
         $this->assertTrue(file_exists($path.'/users.md') && filemtime($path.'/users.md') >= $time);
     }
-    
-    public function tearDown()
+
+    public function tearDown(): void
     {
         m::close();
     }

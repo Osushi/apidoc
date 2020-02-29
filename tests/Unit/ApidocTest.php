@@ -9,25 +9,25 @@ class ApidocTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \Exception
      */
     public function testGetInstance()
     {
+        $this->expectException(\Exception::class);
         $apiDoc = Apidoc::getInstance();
     }
-    
+
     public function testInit()
     {
         $apiDoc = Apidoc::init();
         $this->assertTrue($apiDoc instanceof Apidoc);
     }
-    
+
     public function testGetInstanceAfterInit()
     {
         $apiDoc = Apidoc::getInstance();
         $this->assertTrue($apiDoc instanceof Apidoc);
     }
-    
+
     public function testCall()
     {
         $_SERVER['argv'] = [];
