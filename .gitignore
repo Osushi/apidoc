@@ -1,3 +1,6 @@
+# App
+.phpunit.result.cache
+
 # Composer
 composer.phar
 composer.lock

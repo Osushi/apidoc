@@ -9,7 +9,7 @@ class RequestTest extends TestCase
 {
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new Request();
     }
@@ -42,13 +42,13 @@ class RequestTest extends TestCase
         $this->request->setMethod('post');
         $this->assertEquals('POST', $this->request->getMethod());
     }
-    
+
     public function testSetAndGetPath()
     {
         $this->request->setPath('/users');
         $this->assertEquals('/users', $this->request->getPath());
     }
-    
+
     public function testSetAndGetParameters()
     {
         $this->request->setParameters([

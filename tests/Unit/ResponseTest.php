@@ -9,7 +9,7 @@ class ResponseTest extends TestCase
 {
     private $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->response = new Response();
     }
@@ -38,7 +38,7 @@ class ResponseTest extends TestCase
         $this->response->setCode(404);
         $this->assertEquals(404, $this->response->getCode());
     }
-    
+
     public function testSetAndGetHeaders()
     {
         $this->response->setHeaders([
@@ -48,7 +48,7 @@ class ResponseTest extends TestCase
             'Content-Type' => 'application/json; charset=utf-8',
         ], $this->response->getHeaders());
     }
-    
+
     public function testSetAndGetBody()
     {
         $this->response->setBody('{"created_at": "2015-04-21T14:55:09.351Z"}');

@@ -6,6 +6,8 @@ use Osushi\Apidoc\Config;
 use Osushi\Apidoc\Parameter;
 use Osushi\Apidoc\Request;
 use Osushi\Apidoc\Response;
+use Twig\Loader\ArrayLoader;
+use Twig\Environment;
 
 class Documents
 {
@@ -129,7 +131,7 @@ class Documents
 
     protected function load()
     {
-        $loader = new \Twig_Loader_Array([
+        $loader = new ArrayLoader([
             'document.md' => file_get_contents(
                 $this->config->getConfig($this->config::DOCUMENT_TEMPLATE_PATH)
             ),
@@ -140,7 +142,7 @@ class Documents
                 $this->config->getConfig($this->config::TOC_TEMPLATE_PATH)
             ),
         ]);
-        return new \Twig_Environment($loader);
+        return new Environment($loader);
     }
 
     protected function getKeys(

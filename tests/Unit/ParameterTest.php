@@ -10,11 +10,11 @@ class ParameterTest extends TestCase
 {
     private $parameter;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parameter = new Parameter();
     }
-    
+
     public function testAddAndGetParameter()
     {
         $this->parameter->add('param1', ['required' => true]);
@@ -23,7 +23,7 @@ class ParameterTest extends TestCase
         $this->assertTrue(isset($actual['required']));
         $this->assertTrue(isset($actual['option']));
     }
-    
+
     public function testNoteAndGetNote()
     {
         $this->parameter->note('note1');
@@ -46,7 +46,7 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
-        
+
         // DEFAULT
         $this->assertTrue($mock->validate($this->parameter::DEFAULT, '10'));
         try {
@@ -64,7 +64,7 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
-        
+
         // REQUIRED
         $this->assertTrue($mock->validate($this->parameter::REQUIRED, true));
         try {
@@ -73,7 +73,7 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
-        
+
         // COMMENT
         $this->assertTrue($mock->validate($this->parameter::COMMENT, 'comment'));
         try {
@@ -82,7 +82,7 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
-        
+
         // EXCEPT
         $this->assertTrue($mock->validate($this->parameter::EXCEPT, []));
         try {
@@ -91,7 +91,7 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
-        
+
         // ONLY
         $this->assertTrue($mock->validate($this->parameter::ONLY, []));
         try {
@@ -100,12 +100,12 @@ class ParameterTest extends TestCase
         } catch (\Exception $e) {
             $this->assertTrue(true);
         }
-        
+
         // default
         $this->assertFalse($mock->validate('invalid', []));
     }
-    
-    public function tearDown()
+
+    public function tearDown(): void
     {
         m::close();
     }
