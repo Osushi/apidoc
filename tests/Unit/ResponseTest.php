@@ -28,9 +28,7 @@ class ResponseTest extends TestCase
         $this->assertEquals([
             'Content-Type' => 'application/json; charset=utf-8',
         ], $response->getHeaders());
-        $this->assertEquals([
-            'created_at' => '2015-04-21T14:55:09.351Z',
-        ], $response->getBody());
+        $this->assertTrue(is_string($response->getBody()));
     }
 
     public function testSetAndGetCode()
@@ -52,8 +50,6 @@ class ResponseTest extends TestCase
     public function testSetAndGetBody()
     {
         $this->response->setBody('{"created_at": "2015-04-21T14:55:09.351Z"}');
-        $this->assertEquals([
-            'created_at' => '2015-04-21T14:55:09.351Z',
-        ], $this->response->getBody());
+        $this->assertTrue(is_string($this->response->getBody()));
     }
 }

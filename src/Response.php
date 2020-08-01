@@ -15,15 +15,15 @@ class Response
     ) {
         foreach ($responses as $key => $value) {
             switch ($key) {
-            case 'code':
-                $this->setCode($value);
-                break;
-            case 'headers':
-                $this->setHeaders($value);
-                break;
-            case 'body':
-                $this->setBody($value);
-                break;
+                case 'code':
+                    $this->setCode($value);
+                    break;
+                case 'headers':
+                    $this->setHeaders($value);
+                    break;
+                case 'body':
+                    $this->setBody($value);
+                    break;
             }
         }
     }
@@ -53,7 +53,12 @@ class Response
     public function setBody(
         string $body
     ) {
-        $this->body = json_decode($body, true);
+        $json = json_decode($body, true);
+        if ($json) {
+            $this->body = json_encode($json, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            return;
+        }
+        $this->body = $body;
     }
 
     public function getBody()

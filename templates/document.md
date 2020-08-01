@@ -54,11 +54,11 @@
 {% if document.examples %}
 ### Example
 {% for example in document.examples %}
-{{example.comment}}
+#### {{example.comment}}
 {% if example.request is defined %}
 #### Request
 ```
-{{example.request.getMethod}} {{example.request.getPath}} 
+{{example.request.getMethod}} {{example.request.getPath}}
 {% if example.request.getHeaders %}
 {% for key, value in example.request.getHeaders %}
 {{key}}: {{value}}
@@ -81,7 +81,7 @@
 {% endif %}
 
 {% if example.response.getBody %}
-{{example.response.getBody|json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_PRETTY_PRINT'))|raw}}
+{{example.response.getBody|raw}}
 {% endif %}
 ```
 {% endif %}
