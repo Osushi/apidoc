@@ -3,7 +3,7 @@ Generate markdown documentation from your code.
 
 ## Requirements
 
-- `php` >= 7.0.0
+- `php` >=7.2.5 || ~8.0.0
 
 ## Installation
 
@@ -240,7 +240,7 @@ use Osushi\Apidoc\Response;
 
 $response = new Response([
     'code' => {int status_code},
-    'headers' => {array headers},    
+    'headers' => {array headers},
     'body' => {string json_body},
 ]);
 # or
